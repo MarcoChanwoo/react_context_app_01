@@ -2,7 +2,21 @@ import React from "react";
 
 const Type = ({ orderType }) => {
   console.log("orderType", orderType);
-  return <div>Type</div>;
+  return (
+    <div>
+      <h2>주문 종류</h2>
+      <p>하나의 가격</p>
+      <p>총 가격: </p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: orderType === "option" ? "column" : "row",
+        }}
+      >
+        Item
+      </div>
+    </div>
+  );
 };
 
 export default Type;
