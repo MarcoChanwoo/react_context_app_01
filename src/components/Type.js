@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Products from "./Products";
+import Options from "./Options";
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
@@ -18,9 +19,15 @@ const Type = ({ orderType }) => {
     }
   };
 
-  const Itemcomponents = orderType === "products" ? Products : null;
+  const ItemComponents = orderType === "products" ? Products : Options;
 
-  const optionItems = items.map((item) => <Itemcomponents />);
+  const optionItems = items.map((item) => (
+    <ItemComponents
+      key={item.name}
+      name={item.name}
+      imagePath={item.imagePath}
+    />
+  ));
 
   return (
     <div>
@@ -30,10 +37,10 @@ const Type = ({ orderType }) => {
       <div
         style={{
           display: "flex",
-          flexDirection: orderType === "option" ? "column" : "row",
+          flexDirection: orderType === "options" ? "column" : "row",
         }}
       >
-        Item
+        {optionItems}
       </div>
     </div>
   );
