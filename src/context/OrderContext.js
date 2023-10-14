@@ -2,4 +2,6 @@ import { createContext } from "react";
 
 const OrderContext = createContext();
 
-export default OrderContext;
+export function OrderContextProvider(props) {
+  return <OrderContextProvider value {...props} />;
+}
