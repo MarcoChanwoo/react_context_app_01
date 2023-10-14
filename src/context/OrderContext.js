@@ -1,6 +1,6 @@
 import { createContext, useEffect, useMemo, useState } from "react";
 
-const OrderContext = createContext();
+// const OrderContext = createContext();
 
 export function OrderContextProvider(props) {
   const [orderCounts, setOrderCounts] = useState({
@@ -48,7 +48,7 @@ export function OrderContextProvider(props) {
       setOrderCounts(newOrderCounts);
     }
 
-    return [{ ...orderCounts }, updateItemCount];
-  }, [orderCounts]);
+    return [{ ...orderCounts, totals }, updateItemCount];
+  }, [orderCounts, totals]);
   return <OrderContextProvider value={value} {...props} />;
 }
